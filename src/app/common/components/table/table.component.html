@@ -1,0 +1,19 @@
+<table>
+    <thead>
+        <th *ngFor="let column of columns">{{ column }}</th>
+    </thead>
+    <tbody>
+
+        @for (item of items; track item.id;) {
+        <tr>
+            <td *ngFor="let column of columns">
+                <ng-container [ngSwitch]="column">
+                    <span *ngSwitchCase="'status'">{{ item[column] | status }}</span>
+                    <span *ngSwitchCase="'type'">{{ item[column] | types }}</span>
+                    <span *ngSwitchDefault>{{ item[column] }}</span>
+                </ng-container>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

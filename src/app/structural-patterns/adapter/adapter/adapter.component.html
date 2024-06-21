@@ -1,0 +1,48 @@
+<h3>There are two ways to implement the Adapter pattern by:</h3>
+<ol>
+    <ul>-<strong>extends</strong></ul>
+    <ul>-<strong>composition</strong></ul>
+</ol>
+<div>
+    <h3>Extends:</h3>
+    <div>
+        <app-table [items]="currentTasks()" />
+    </div>
+
+    <div>
+
+        <app-radio [name]="'filter'" [value]="FilterColumn.status" [label]="'Status'" [isChecked]="true"
+            (selectedValue)="onRadioSelectionChange($event)" />
+
+        <app-select-dropdown *ngIf="configFilter.filterKey === FilterColumn.status" [keys]="statusKeys"
+            [values]="statusValues" [selectedValue]="configFilter.statusValue"
+            (selectionChange)="ngModelChangeFilterValue( FilterColumn.status, configFilter.statusValue = $event)" />
+
+    </div>
+    <div>
+
+        <app-radio [name]="'filter'" [value]="FilterColumn.type" [label]="'Type'" [isChecked]="false"
+            (selectedValue)="onRadioSelectionChange($event)" />
+
+        <app-select-dropdown *ngIf="configFilter.filterKey === FilterColumn.type" [keys]="typesKeys"
+            [values]="typesValues" [selectedValue]="configFilter.typeValue"
+            (selectionChange)="ngModelChangeFilterValue(FilterColumn.type, configFilter.typeValue = $event )" />
+
+    </div>
+</div>
+<hr>
+<div>
+    <h3>Composition:</h3>
+    <div>
+        <app-table [items]="currentTasks()" />
+    </div>
+    <div>
+        <app-select-dropdown [keys]="statusKeys" [values]="statusValues" [selectedValue]="configFilter.statusValue"
+            (selectionChange)="ngModelChangeFilter(configFilter.filterKey = FilterColumn.status , configFilter.statusValue = $event)" />
+
+
+        <app-select-dropdown [keys]="typesKeys" [values]="typesValues" [selectedValue]="configFilter.typeValue"
+            (selectionChange)="ngModelChangeFilter(configFilter.filterKey = FilterColumn.type  , configFilter.typeValue = $event )" />
+    </div>
+
+</div>

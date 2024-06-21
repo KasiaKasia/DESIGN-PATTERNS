@@ -1,0 +1,3 @@
+<select [(ngModel)]="selectedValue" (ngModelChange)="onSelectionChange()">
+    <option *ngFor="let key of keys" [value]="key">{{ values[key] }}</option>
+</select>
