@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <label for="selectedManager">Select manager: </label>
+    <select id="selectedManager" [(ngModel)]="company.selectedManagerName" (ngModelChange)="setSelectedManager($event)">
+      <option *ngFor="let manager of getAllManagers(boss)" [value]="manager.getName()">
+        {{ manager.getName() }}
+      </option>
+    </select>
+  </div>
+
+  <div class="row">
+    <label for="managerName">Name manager: </label>
+    <input type="text" id="managerName" name="managerName" [(ngModel)]="company.managerName">
+    <button (click)="addManager(company.managerName)">Add Manager</button>
+  </div>
+
+  <div class="row" *ngIf="selectedManager">
+    <label for="employeeNeme">Name employee: </label>
+    <input type="text" id="employeeNeme" name="employeeNeme" [(ngModel)]="company.employeeNeme">
+    <button (click)="addEmployeeForManager(company.selectedManagerName, company.employeeNeme)">
+      Add Employee for Manager
+    </button>
+  </div>
+</div>
+
+<div>
+  <h3>Company Structure</h3>
+  <ul>
+    <ng-container *ngIf="boss">
+      <li *ngFor="let manager of boss.getEmployees()">
+        <app-employee [manager]="manager"/>
+      </li>
+    </ng-container>
+  </ul>
+</div>

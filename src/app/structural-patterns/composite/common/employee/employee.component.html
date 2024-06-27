@@ -1,0 +1,8 @@
+<div>
+    <span>{{ manager.getName() }}</span>
+    <ul>
+        <li *ngFor="let employee of manager?.getEmployees()">
+            <span>{{ employee.getName() }}</span>
+        </li>
+    </ul>
+</div>
