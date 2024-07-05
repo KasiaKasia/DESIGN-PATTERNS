@@ -18,7 +18,7 @@ export interface FilterConfiguration {
   styleUrl: './adapter.component.scss'
 })
 export class AdapterComponent extends SingleColumnFilter {
-  private dataService = inject(DataService);
+  //private dataService = inject(DataService);
   startupConfiguration: FilterColumn = FilterColumn.status;
   FilterColumn = FilterColumn;
   configFilter: FilterConfiguration = {
@@ -35,7 +35,7 @@ export class AdapterComponent extends SingleColumnFilter {
 
   protected currentTasks: Signal<Tasks[]> = this.dataService.getCurrentTasks();
 
-  constructor() {
+  constructor(public dataService:DataService) {
     super()
   }
 

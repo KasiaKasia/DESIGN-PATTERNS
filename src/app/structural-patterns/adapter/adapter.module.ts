@@ -22,9 +22,7 @@ import { StructuralPatternsModule } from "../structural-patterns.module";
     StatusPipe,
     TypesPipe
   ],
-  providers: [
-    DataService
-  ],
+ 
   exports: [
     AdapterComponent,
     TableComponent,

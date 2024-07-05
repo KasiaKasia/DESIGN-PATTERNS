@@ -11,4 +11,4 @@ import { StructuralPatternsComponent } from './structural-patterns/structural-pa
   ],
   exports: [StructuralPatternsComponent,]
 })
-export class StructuralPatternsModule { }
+export class StructuralPatternsModule {}
