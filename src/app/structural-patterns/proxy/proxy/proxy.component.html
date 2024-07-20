@@ -2,3 +2,24 @@
     It serves the function of intermediating between two abstractions.
 </h3>
 <div>{{ (textData$ | async)?.description }}</div>
+
+<ng-container *ngIf="users$ | async as users;">
+
+    <ul *ngIf="users.length; else empty">
+      <li *ngFor="let user of users$ | async; let i = index;">
+      {{user.id}}  {{ user.name }} 
+     
+      </li>
+  
+    </ul>
+  
+    <ng-template #empty>
+      <div>No Data</div>
+    </ng-template>
+  
+  
+  <button (click)="loadUsers()">Refresh</button>
+   
+  <div *ngIf="isLoading$ | async">Loading...</div>
+  
+  </ng-container>

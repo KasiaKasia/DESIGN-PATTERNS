@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { StructuralPatternsRoutingModule } from './structural-patterns-routing.module';
 import { StructuralPatternsComponent } from './structural-patterns/structural-patterns.component';
+import { StructuralPatternsRoutingModule } from './structural-patterns-routing.module';
 
 @NgModule({
-  declarations: [StructuralPatternsComponent,],
+  declarations: [StructuralPatternsComponent],
   imports: [
     CommonModule,
     StructuralPatternsRoutingModule,
   ],
-  exports: [StructuralPatternsComponent,]
+  exports: [StructuralPatternsComponent]
 })
-export class StructuralPatternsModule {}
+export class StructuralPatternsModule { }

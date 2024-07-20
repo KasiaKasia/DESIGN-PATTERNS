@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { FilterColumn } from '../../model/model';
+import { FilterColumn } from '../../../structural-patterns/adapter/model/model';
 
 
 @Component({

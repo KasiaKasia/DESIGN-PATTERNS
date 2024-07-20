@@ -11,4 +11,7 @@ export const routes: Routes = [{
 }, {
     path: 'structural-patterns',
     loadChildren: () => import('./structural-patterns/structural-patterns.module').then(s => s.StructuralPatternsModule)
+}, {
+    path: 'creational-patterns',
+    loadChildren: () => import('./creational-patterns/creational-patterns.module').then(c => c.CreationalPatternsModule)
 }];

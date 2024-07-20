@@ -1,8 +1,8 @@
 import { Component, Signal, inject } from '@angular/core';
-import { Status, Tasks, StatusKey, TypesKey, Types, FilterColumn } from '../../../common/model/model';
-import { DataService } from '../../../common/service/data.service';
+import { Status, Tasks, StatusKey, TypesKey, Types, FilterColumn } from '../model/model';
+import { DataService } from '../service/data.service';
 import { SingleColumnFilter, DoubleColumnFilter } from '../../common/task-manager';
-import { tasks } from '../../../common/service/data';
+import { tasks } from '../service/data';
 
 
 export interface FilterConfiguration {

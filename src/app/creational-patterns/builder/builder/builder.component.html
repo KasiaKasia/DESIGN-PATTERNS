@@ -1,0 +1,68 @@
+<div class="container">
+    <form [formGroup]="formBuilderGroup" (ngSubmit)="save()">
+        <div class="form-row">
+            <label class="form-label" for="name">Name:</label>
+            <input class="form-input" type="text" id="name" name="name" 
+                formControlName="name">
+        </div>
+        <div class="form-row">
+            <label class="form-label" for="number">number:</label>
+            <input class="form-input" type="number" id="number" name="number" 
+                formControlName="number">
+        </div>
+
+        <div class="form-row" formGroupName="group">
+            <label class="form-label" for="groupName">Group name:</label>
+            <input class="form-input" type="text" id="groupName" 
+                formControlName="groupName">
+        </div>
+
+        <div class="form-group" formGroupName="groupRadioSelectArrayChcekBox">
+            <label class="form-label">Radios:</label>
+            <div *ngFor="let radio of radios">
+                <input class="form-input" type="radio" [value]="radio" 
+                    formControlName="radio">{{ radio }}
+            </div>
+
+            <div class="form-row">
+                <label class="form-label" for="select">Select:</label>
+                <select class="form-input" id="select" formControlName="select">
+                    <option *ngFor="let select of selects" [value]="select">
+                        {{ select }}
+                    </option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">CheckBox: </label>
+                <div formArrayName="checkBox" *ngFor="let item of checkBox.controls; let i = index">
+                    <div [formGroupName]="i">
+                        <input class="form-input" type="checkbox" formControlName="selected">
+                        {{ item.value.value }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div formArrayName="record">
+                <label class="form-label">Rrecord: </label>
+                <button type="submit" (click)="addRecord()">
+                    + Add another record
+                </button>
+
+                @for ( record of record.controls; track record; let i = $index) {
+                <div class="form-row" [formGroupName]="i">
+                    <label class="form-label" for="key-{{ i }}">Key:</label>
+                    <input class="form-input" id="key-{{ i }}" type="text" 
+                        formControlName="key">
+                    <label class="form-label" for="value-{{ i }}">Value:</label>
+                    <input class="form-input" id="value-{{ i }}" type="text" 
+                        formControlName="value">
+                </div>
+                }
+            </div>
+        </div>
+        <button type="submit">Submit</button>
+        <button type="submit" (click)="reset()">reset</button>
+    </form>
+</div>

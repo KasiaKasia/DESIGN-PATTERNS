@@ -1,4 +1,4 @@
-import { FilterColumn, StatusKey, Tasks, TypesKey } from '../../common/model/model';
+import { FilterColumn, StatusKey, Tasks, TypesKey } from '../adapter/model/model';
 
 export interface SingleColumnFilterable<T> {
     filterBySingleColumn(tasks: T[], column: keyof T, value: number): T[];
