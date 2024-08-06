@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { CreationalPatternsRoutingModule } from './creational-patterns-routing.module';
 import { CreationalPatternsComponent } from './creational-patterns/creational-patterns.component';
 import { BuilderModule } from './builder/builder.module';
+import { SimpleFactoryModule } from './simple-factory/simple-factory.module';
 
 
 @NgModule({
@@ -12,6 +13,7 @@ import { BuilderModule } from './builder/builder.module';
     CreationalPatternsRoutingModule,
     CreationalPatternsComponent,
     BuilderModule,
+    SimpleFactoryModule
   ]
 })
 export class CreationalPatternsModule { }

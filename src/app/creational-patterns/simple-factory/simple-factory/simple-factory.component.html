@@ -1,0 +1,4 @@
+<p>simple factory </p>
+<input [ngModel]="iban" type="text" (ngModelChange)="checkBankNumber(iban = $event)">
+
+<p>Country of bank account number {{ country }} for {{iban}}</p>

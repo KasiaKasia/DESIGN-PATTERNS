@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-creational-patterns',
   standalone: true,
-  imports: [],
+  imports: [RouterOutlet],
   templateUrl: './creational-patterns.component.html',
   styleUrl: './creational-patterns.component.scss'
 })
