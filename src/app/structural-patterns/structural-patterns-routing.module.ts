@@ -15,6 +15,9 @@ const routes: Routes = [{
   }, {
     path: 'proxy',    
     loadChildren: () => import('./proxy/proxy.module').then(p => p.ProxyModule)
+  }, {
+    path: 'decorator',    
+    loadChildren: () => import('./decorator/decorator.module').then(p => p.DecoratorModule)
   }];
 
 @NgModule({

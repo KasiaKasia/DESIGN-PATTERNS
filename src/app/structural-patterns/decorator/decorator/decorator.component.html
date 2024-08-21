@@ -1,0 +1,8 @@
+<ul>
+    <li *ngFor="let item of list">
+        <input type="checkbox" [(ngModel)]="item.checked">{{item.title}}
+    </li>
+</ul>
+
+<input type="text" (ngModelChange)="notificationContent = $event" [ngModel]="notificationContent" />
+<button (click)="sendNotification(notificationContent)">Notify</button>
