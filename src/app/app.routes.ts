@@ -9,9 +9,12 @@ export const routes: Routes = [{
     path: 'home',
     component: HomeComponent
 }, {
-    path: 'structural-patterns',
-    loadChildren: () => import('./structural-patterns/structural-patterns.module').then(s => s.StructuralPatternsModule)
+    path: 'behavioral-patterns',
+    loadChildren: () => import('./behavioral-patterns/behavioral-patterns.module').then(s => s.BehavioralPatternsModule)
 }, {
     path: 'creational-patterns',
     loadChildren: () => import('./creational-patterns/creational-patterns.module').then(c => c.CreationalPatternsModule)
+}, {
+    path: 'structural-patterns',
+    loadChildren: () => import('./structural-patterns/structural-patterns.module').then(s => s.StructuralPatternsModule)
 }];

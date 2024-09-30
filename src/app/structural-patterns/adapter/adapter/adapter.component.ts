@@ -48,11 +48,11 @@ export class AdapterComponent extends SingleColumnFilter {
   }
 
   onRadioSelectionChange(selectedValue: FilterColumn) {
-
+ 
     selectedValue === FilterColumn.type ? this.configFilter.statusValue = 0 : this.configFilter.typeValue = 0
     if (this.configFilter.statusValue === 0 && this.configFilter.typeValue === 0) {
       this.dataService.updateTasks(tasks);
-    }
+    } 
     this.configFilter.filterKey = selectedValue
   }
 

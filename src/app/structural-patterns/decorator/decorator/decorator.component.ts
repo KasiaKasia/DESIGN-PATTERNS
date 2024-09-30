@@ -11,7 +11,17 @@ import { Notifications, Notifier } from './service/notifier';
   selector: 'app-decorator',
   standalone: true,
   imports: [FormsModule, NgFor],
-  templateUrl: './decorator.component.html',
+  template: `
+    <ul>
+      <li *ngFor="let item of list">
+          <input type="checkbox" [(ngModel)]="item.checked">{{item.title}}
+      </li>
+  </ul>
+
+  <input type="text" (ngModelChange)="notificationContent = $event" [ngModel]="notificationContent" />
+  <button (click)="sendNotification(notificationContent)">Notify</button>
+  `,
+ // templateUrl: './decorator.component.html',
   styleUrl: './decorator.component.scss'
 })
 export class DecoratorComponent {
@@ -32,23 +42,25 @@ export class DecoratorComponent {
   ]
   notificationContent = ''
   notifier: Notifier = new Notifications()
-  constructor() { }
-
 
   sendNotification(message: string): void {
     let decoratedNotifier = this.notifier;
 
     if (this.list[0].checked) {
+      console.log('FacebookDecoratorService decoratedNotifier ', decoratedNotifier)
       decoratedNotifier = new FacebookDecoratorService(decoratedNotifier);
     }
     if (this.list[1].checked) {
+      console.log('SlackDecoratorService decoratedNotifier ', decoratedNotifier)
+
       decoratedNotifier = new SlackDecoratorService(decoratedNotifier);
     }
     if (this.list[2].checked) {
+      console.log('NotifierDecoratorService decoratedNotifier ', decoratedNotifier)
+
       decoratedNotifier = new NotifierDecoratorService(decoratedNotifier);
     }
 
     decoratedNotifier.send(message);
   }
-
 }

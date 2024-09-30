@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterModule, RouterOutlet } from '@angular/router';
- 
+
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -18,4 +18,12 @@ export class AppComponent {
       title: 'SIMPLE FACTORY', link: 'creational-patterns/simple-factory',
     }]
   }]
+  behavioral = [{
+    title: 'Behavioral Patterns', link: 'behavioral-patterns',
+    types: [{
+      title: 'CHAIN OF RESPONSIBILITY', link: 'behavioral-patterns/chain-of-responsibility',
+    }]
+  }
+
+  ]
 }
