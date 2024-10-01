@@ -1,24 +1,19 @@
 <form (ngSubmit)="onSubmit()">
-    <div>
-      <label for="name">Name:</label>
-      <input type="text" id="name" [(ngModel)]="userData.name" name="name" required>
-    </div>
-  
-    <div>
-      <label for="surname">Surname:</label>
-      <input type="text" id="surname" [(ngModel)]="userData.surname" name="surname" required>
-    </div>
-  
-    <div>
-      <label for="address">Address:</label>
-      <input type="text" id="address" [(ngModel)]="userData.address" name="address" required>
-    </div>
-  
-    <div>
-      <label for="city">City:</label>
-      <input type="text" id="city" [(ngModel)]="userData.city" name="city" required>
-    </div>
-  
-    <button type="submit">Submit</button>
-  </form>
-  {{result}}
+  <div>
+    <label for="name">Name:</label>
+    <input type="text" id="name" [(ngModel)]="userData.name" name="name" required>
+  </div>
+  <div>
+    <label for="surname">Surname:</label>
+    <input type="text" id="surname" [(ngModel)]="userData.surname" name="surname" required>
+  </div>
+  <div>
+    <label for="address">Address:</label>
+    <input type="text" id="address" [(ngModel)]="userData.address" name="address" required>
+  </div>
+  <div>
+    <label for="city">City:</label>
+    <input type="text" id="city" [(ngModel)]="userData.city" name="city" required>
+  </div>
+  <button type="submit">Submit</button>
+</form>

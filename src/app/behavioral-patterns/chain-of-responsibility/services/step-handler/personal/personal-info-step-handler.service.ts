@@ -14,7 +14,7 @@ export class PersonalInfoStepHandlerService extends AbstractStepHandler {
     }
   }
 
-  private isValidPersonalInfo(request: any): boolean { 
+  private isValidPersonalInfo(request: any): boolean {
     return request.name && request.surname;
   }
 }

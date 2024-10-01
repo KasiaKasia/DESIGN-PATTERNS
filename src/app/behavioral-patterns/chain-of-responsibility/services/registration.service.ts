@@ -16,10 +16,10 @@ export class RegistrationService {
 
   public startRegistration(request: any): void {
 
+
     this.personalInfoStepHandler
       .setNext(this.addressStepHandler)
-      .setNext(this.confirmationStepHandler);
-
+      .setNext(this.confirmationStepHandler)
     this.personalInfoStepHandler.handle(request);
     console.log(request);
     // you can also use the handleRequest method

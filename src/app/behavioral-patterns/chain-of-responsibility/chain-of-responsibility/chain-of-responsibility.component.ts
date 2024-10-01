@@ -16,11 +16,9 @@ export class ChainOfResponsibilityComponent {
     address: '',
     city: '',
   };
-  result: any
   constructor(private registrationService: RegistrationService) { }
 
   onSubmit() {
-    this.result = this.registrationService.startRegistration(this.userData);
-
+    this.registrationService.startRegistration(this.userData);
   }
 }
