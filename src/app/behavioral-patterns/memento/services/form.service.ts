@@ -21,10 +21,7 @@ export class FormService {
   }
 
   saveState(text: string): void {
-    const formCopy = this.fb.group(this.form.value);
-
-    this.caretaker.backup(text);
-    this.originator.doSomething();
+    this.caretaker.backup(text); 
   }
 
   undo(): void {
