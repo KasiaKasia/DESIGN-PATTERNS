@@ -5,3 +5,11 @@
 <button (click)="save()">save</button>
 <button (click)="undo()">undo</button>
 <button (click)="showHistory()">show history</button>
+
+@if (showHide) { 
+    @for (item of mementos; track item ) {
+    <li>{{ item.getValue() }}</li>
+    } @empty {
+    <li>There are no items.</li>
+    } 
+}

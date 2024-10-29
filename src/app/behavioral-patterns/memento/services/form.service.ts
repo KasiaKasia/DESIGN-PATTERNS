@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Originator , Caretaker} from '../model/memento';
+import { Originator, Caretaker, Memento } from '../model/memento';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class FormService {
-
-  originator = new Originator('');
-  caretaker = new Caretaker(this.originator);
+  mementos: Memento[] = [];
+  private originator = new Originator('');
+  private caretaker = new Caretaker(this.originator);
   private form: FormGroup = this.fb.group({
     text: [''],
   });
@@ -21,14 +21,15 @@ export class FormService {
   }
 
   saveState(text: string): void {
-    this.caretaker.backup(text); 
+    this.caretaker.backup(text);
   }
 
   undo(): void {
-    const caretaker = this.caretaker.undo()
-    this.form.controls['text'].setValue(caretaker?.getState())
+    const caretaker = this.caretaker.undo(); 
+ 
+    caretaker.length ? this.form.controls['text'].setValue(caretaker![caretaker!.length! - 1]!.getState()!) : this.form.reset()
   }
   showHistory() {
-    this.caretaker.showHistory();
+    return this.mementos = this.caretaker.showHistory();
   }
 }

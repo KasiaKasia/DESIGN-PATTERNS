@@ -1,3 +1,7 @@
+
+/*
+
+*/
 export class Originator {
     private state: string;
 
@@ -30,15 +34,15 @@ export class ConcreteMemento implements Memento {
     }
 
     public getState(): string {
-        return this.state;
+        return this.state ?? '';
     }
 
     public getValue(): string {
-        return `${this.date} / (${this.state.substr(0, 9)}...)`;
+        return `${this.date} / ${this.state}`;
     }
 
     public getDate(): string {
-        return this.date;
+        return this.date ;
     }
 }
 
@@ -54,19 +58,17 @@ export class Caretaker {
         this.mementos.push(this.originator.save(text));
     }
 
-    public undo(): Memento | null {
+    public undo(): Memento[]  {
         if (!this.mementos.length) {
-            return null;
+            return [];
         }
 
         const memento = this.mementos.pop();
         this.originator.restore(memento!);
-        return memento!
+        return this.mementos!
     }
 
-    public showHistory(): void {
-        for (const memento of this.mementos) {
-            console.log(memento.getValue());
-        }
+    public showHistory(): Memento[] {
+        return this.mementos
     }
 }
