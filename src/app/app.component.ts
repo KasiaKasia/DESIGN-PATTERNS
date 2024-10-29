@@ -22,8 +22,8 @@ export class AppComponent {
     title: 'Behavioral Patterns', link: 'behavioral-patterns',
     types: [{
       title: 'CHAIN OF RESPONSIBILITY', link: 'behavioral-patterns/chain-of-responsibility',
+    }, {
+      title: 'MEMENTO', link: 'behavioral-patterns/memento',
     }]
-  }
-
-  ]
+  }]
 }

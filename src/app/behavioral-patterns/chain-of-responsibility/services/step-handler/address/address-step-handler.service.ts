@@ -9,7 +9,6 @@ export class AddressStepHandlerService extends AbstractStepHandler {
     if (this.isValidAddress(request)) {
       console.log('Step 2: Address details are correct.');
       super.handle(request);
-
     } else {
       console.log('Step 2: Incorrect address details.');
     }

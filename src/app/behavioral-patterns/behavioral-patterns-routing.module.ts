@@ -9,7 +9,10 @@ const routes: Routes = [{
   }, {
     path: 'chain-of-responsibility',  
     loadChildren: () => import('./chain-of-responsibility/chain-of-responsibility.module').then(a => a.ChainOfResponsibilityModule)
-  }, ];
+  }, { 
+    path: 'memento',  
+    loadChildren: () => import('./memento/memento.module').then(a => a.MementoModule)
+  }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
