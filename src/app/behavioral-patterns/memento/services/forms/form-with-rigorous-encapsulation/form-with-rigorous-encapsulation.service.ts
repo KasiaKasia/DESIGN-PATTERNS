@@ -7,9 +7,9 @@ import { ConcreteOriginator, Caretaker, Memento, ConcreteMemento } from '../../.
 })
 export class FormWithRigorousEncapsulationService {
 
-  mementos: Memento[] = [];
-  originator = new ConcreteOriginator('');
-  caretaker = new Caretaker(this.originator);
+  private mementos: Memento[] = [];
+  private originator = new ConcreteOriginator('');
+  private caretaker = new Caretaker(this.originator);
   private form: FormGroup = this.fb.group({
     text: [''],
   });
@@ -26,8 +26,8 @@ export class FormWithRigorousEncapsulationService {
 
   undoRigorousEncapsulation() {
     const caretaker = this.caretaker.undo();
-    const currentState = (caretaker![caretaker!.length! - 1] as ConcreteMemento).getValue();
-    this.form.patchValue({ text: currentState });
+    const currentState = (caretaker![caretaker!.length! - 1] as ConcreteMemento)!.getValue()!;
+    caretaker.length ? this.form.patchValue({ text: currentState }) : this.form.reset();
   }
 
   showHistoryRigorousEncapsulation(): string[] {

@@ -1,32 +1,32 @@
- export interface Originator {
+export interface Originator {
     save(state: string): Memento;
     setState(state: string): void;
     getState?(): string
 }
 
- export interface Memento {
+export interface Memento {
     restore(): void;
     getValue?(): string;
 }
- 
+
 export class ConcreteOriginator implements Originator {
     private state: string;
 
     constructor(initialState: string) {
         this.state = initialState;
     }
- 
+
     public save(state: string): Memento {
         this.setState(state);
         return new ConcreteMemento(this, this.state);
     }
- 
+
     public setState(state: string): void {
         this.state = state;
     }
- 
+
     public getState(): string {
-        return this.state;
+        return this.state ?? '';
     }
 }
 
@@ -44,8 +44,9 @@ export class ConcreteMemento implements Memento {
     public restore(): void {
         this.originator.setState(this.state);
     }
+    
     public getValue(): string {
-        return this.state;
+        return this.state ?? '';
     }
 }
 
@@ -66,13 +67,12 @@ export class Caretaker {
     // Cofnięcie do ostatniego stanu
     public undo(): Memento[] {
         if (!this.mementos.length) {
-            console.log("Brak stanu do przywrócenia.");
             return [];
         }
 
         const memento = this.mementos.pop();
         memento?.restore();
-        return this.mementos
+        return this.mementos!
     }
 
     // Wyświetlanie historii zapisanych stanów

@@ -7,7 +7,7 @@ import { Originator, Caretaker, Memento } from '../../../model/memento-intermedi
   providedIn: 'root'
 })
 export class FormService {
-  mementos: Memento[] = [];
+  private mementos: Memento[] = [];
   private originator = new Originator('');
   private caretaker = new Caretaker(this.originator);
   private form: FormGroup = this.fb.group({
@@ -28,7 +28,7 @@ export class FormService {
     const caretaker = this.caretaker.undo(); 
     caretaker.length ? this.form.controls['text'].setValue(caretaker![caretaker!.length! - 1]!.getState()!) : this.form.reset()
   }
-  
+
   showHistory() {
     return this.mementos = this.caretaker.showHistory();
   }
