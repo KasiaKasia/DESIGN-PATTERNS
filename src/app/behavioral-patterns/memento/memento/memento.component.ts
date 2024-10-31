@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { FormService } from '../services/form.service';
+import { FormService } from '../services/forms/form-for-intermediate-interface/form-for-intermediate-interface.service';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { Memento } from '../model/memento';
+import { Memento as MementoForIntermediateInterface } from '../model/memento-intermediate-interface';
 import { NgFor, NgIf } from '@angular/common';
+import { FormWithRigorousEncapsulationService } from '../services/forms/form-with-rigorous-encapsulation/form-with-rigorous-encapsulation.service';
 
 
 @Component({
@@ -14,19 +15,36 @@ import { NgFor, NgIf } from '@angular/common';
 })
 export class MementoComponent {
   showHide = false
-  mementos: Memento[] = [];
-  form: FormGroup = this.formService.getForm()
+  hideShow: boolean = false;
+  mementosForIntermediateInterface: MementoForIntermediateInterface[] = [];
+  mementosWithRigorousEncapsulation: string[] = [];
+  formForIntermediateInterface: FormGroup = this.serviceFormForIntermediateInterface.getForm()
+  formWithRigorousEncapsulation: FormGroup = this.serviceFormWithRigorousEncapsulation.getForm()
 
-  constructor(private formService: FormService) { }
-
-  save(): void {
-    this.formService.saveState(this.form.controls['text'].value);
+  constructor(private serviceFormForIntermediateInterface: FormService,
+    private serviceFormWithRigorousEncapsulation: FormWithRigorousEncapsulationService
+  ) { }
+  // Implementation based on an intermediate interface
+  saveIntermediateInterface(): void {
+    this.serviceFormForIntermediateInterface.saveState(this.formForIntermediateInterface.controls['text'].value);
   }
-  undo(): void {
-    this.formService.undo();
+  undoIntermediateInterface(): void {
+    this.serviceFormForIntermediateInterface.undo();
   }
-  showHistory() {
+  showHistoryIntermediateInterface(): MementoForIntermediateInterface[] {
     this.showHide = !this.showHide;
-    return this.mementos = this.formService.showHistory();
+    return this.mementosForIntermediateInterface = this.serviceFormForIntermediateInterface.showHistory();
+  }
+
+  // Implementation with even stricter encapsulation
+  saveRigorousEncapsulation(): void {
+    this.serviceFormWithRigorousEncapsulation.saveRigorousEncapsulation(this.formWithRigorousEncapsulation.controls['text'].value);
+  }
+  undoRigorousEncapsulation(): void {
+    this.serviceFormWithRigorousEncapsulation.undoRigorousEncapsulation();
+  }
+  showHistoryRigorousEncapsulation() {
+    this.hideShow = !this.hideShow;
+    return this.mementosWithRigorousEncapsulation = this.serviceFormWithRigorousEncapsulation.showHistoryRigorousEncapsulation();
   }
 }

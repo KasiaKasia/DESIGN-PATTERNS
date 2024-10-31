@@ -4,10 +4,9 @@ import { MementoRoutingModule } from './memento-routing.module';
 
 
 @NgModule({
-  declarations: [],
   imports: [
     CommonModule,
     MementoRoutingModule
   ]
 })
-export class MementoModule { }
+export class MementoModule {}

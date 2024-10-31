@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Originator, Caretaker, Memento } from '../model/memento';
+import { Originator, Caretaker, Memento } from '../../../model/memento-intermediate-interface';
 
 
 @Injectable({
@@ -26,9 +26,9 @@ export class FormService {
 
   undo(): void {
     const caretaker = this.caretaker.undo(); 
- 
     caretaker.length ? this.form.controls['text'].setValue(caretaker![caretaker!.length! - 1]!.getState()!) : this.form.reset()
   }
+  
   showHistory() {
     return this.mementos = this.caretaker.showHistory();
   }

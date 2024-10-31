@@ -1,6 +1,5 @@
-
 /*
-
+Klasa dla zapisywania stanu
 */
 export class Originator {
     private state: string;
@@ -17,13 +16,15 @@ export class Originator {
         this.state = memento.getState();
     }
 }
-
+// Interfejs gdzie jest ustalany stan przechowywanego obiektu
 export interface Memento {
     getState(): string;
     getValue(): string;
     getDate(): string;
 }
-
+/*
+Klasa gdzie jest tworzony obiekt, który będzie przechowywany
+*/
 export class ConcreteMemento implements Memento {
     private state: string;
     private date: string;
@@ -42,10 +43,12 @@ export class ConcreteMemento implements Memento {
     }
 
     public getDate(): string {
-        return this.date ;
+        return this.date;
     }
 }
-
+/*
+Klasa która zarządza zapisem stanu , używana do przywracania wcześniejszego stanu .
+*/
 export class Caretaker {
     private mementos: Memento[] = [];
     private originator: Originator;
@@ -58,7 +61,7 @@ export class Caretaker {
         this.mementos.push(this.originator.save(text));
     }
 
-    public undo(): Memento[]  {
+    public undo(): Memento[] {
         if (!this.mementos.length) {
             return [];
         }

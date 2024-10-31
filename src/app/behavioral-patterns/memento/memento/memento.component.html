@@ -1,15 +1,40 @@
-<form [formGroup]="form">
+<p>
+    Implementation based on an intermediate interface
+</p>
+<form [formGroup]="formForIntermediateInterface">
     <input formControlName="text" placeholder="text" />
 </form>
 
-<button (click)="save()">save</button>
-<button (click)="undo()">undo</button>
-<button (click)="showHistory()">show history</button>
+<button (click)="saveIntermediateInterface()">save</button>
+<button (click)="undoIntermediateInterface()">undo</button>
+<button (click)="showHistoryIntermediateInterface()">show history</button>
 
-@if (showHide) { 
-    @for (item of mementos; track item ) {
-    <li>{{ item.getValue() }}</li>
-    } @empty {
-    <li>There are no items.</li>
-    } 
+@if (showHide) {
+    @for (item of mementosForIntermediateInterface; track item ) {
+        <li>{{ item.getValue() }}</li>
+        } @empty {
+        <li>There are no items.</li>
+    }
+}
+
+<hr>
+
+<p>
+    Implementation with rigorous encapsulation
+</p>
+
+<form [formGroup]="formWithRigorousEncapsulation">
+    <input formControlName="text" placeholder="text" />
+</form>
+
+<button (click)="saveRigorousEncapsulation()">save</button>
+<button (click)="undoRigorousEncapsulation()">undo</button>
+<button (click)="showHistoryRigorousEncapsulation()">show history</button>
+
+@if (hideShow) {
+    @for (item of mementosWithRigorousEncapsulation; track item ) {
+        <li>{{ item }}</li>
+        } @empty {
+        <li>There are no items.</li>
+    }
 }

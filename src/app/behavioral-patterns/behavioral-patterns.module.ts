@@ -4,10 +4,7 @@ import { BehavioralPatternsRoutingModule } from './behavioral-patterns-routing.m
 import { ChainOfResponsibilityModule } from './chain-of-responsibility/chain-of-responsibility.module';
 import { MementoModule } from './memento/memento.module';
 
-
-
 @NgModule({
-  declarations: [],
   imports: [
     CommonModule,
     BehavioralPatternsRoutingModule,
@@ -15,4 +12,4 @@ import { MementoModule } from './memento/memento.module';
     MementoModule
   ]
 })
-export class BehavioralPatternsModule { }
+export class BehavioralPatternsModule {}
