@@ -1,8 +1,14 @@
 import { Injectable } from '@angular/core';
 import { forkJoin, Observable } from 'rxjs';
-import { UserService } from '../services/user-service/user.service';
-import { CategoriesService } from '../services/categories-service/categories.service';
-import { ProductsService } from '../services/products-service/products.service';
+import { User, UserService } from '../services/user-service/user.service';
+import { CategoriesService, Category } from '../services/categories-service/categories.service';
+import { Product, ProductsService } from '../services/products-service/products.service';
+
+export interface UserCategoryProduct {
+  user: User;
+  categories: Category[];
+  products: Product[];
+}
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +21,7 @@ export class UserCategoryProductsFacadeService {
     private userService: UserService
   ) {}
 
-  getProductCategoriesUser(): Observable<any> {
+  getProductCategoriesUser(): Observable<UserCategoryProduct> {
     return forkJoin({
       products: this.productsService.getProducts(),
       categories: this.categoriesService.getCategories(),

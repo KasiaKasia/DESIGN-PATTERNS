@@ -20,11 +20,7 @@ export class ProductsService {
     { id: 3, name: 'Product 3', categoryId: 1, price: 200 },
     { id: 4, name: 'Product 4', categoryId: 3, price: 250 }
   ];
-
-  getProductsByCategoryId(categoryId: number): Observable<Product[]> {
-    const productsInCategory = this.products.filter(product => product.categoryId === categoryId);
-    return of(productsInCategory);
-  }
+ 
   getProducts(): Observable<Product[]> {
     return of(this.products);
   }
