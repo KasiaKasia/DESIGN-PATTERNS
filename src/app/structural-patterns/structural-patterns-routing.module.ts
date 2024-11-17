@@ -17,7 +17,10 @@ const routes: Routes = [{
     loadChildren: () => import('./proxy/proxy.module').then(p => p.ProxyModule)
   }, {
     path: 'decorator',    
-    loadChildren: () => import('./decorator/decorator.module').then(p => p.DecoratorModule)
+    loadChildren: () => import('./decorator/decorator.module').then(d => d.DecoratorModule)
+  }, {
+    path: 'facade',    
+    loadChildren: () => import('./facade/facade.module').then(f => f.FacadeModule)
   }];
 
 @NgModule({
