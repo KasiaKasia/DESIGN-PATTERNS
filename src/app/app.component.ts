@@ -23,6 +23,8 @@ export class AppComponent {
     types: [{
       title: 'CHAIN OF RESPONSIBILITY', link: 'behavioral-patterns/chain-of-responsibility',
     }, {
+      title: 'ITERATOR', link: 'behavioral-patterns/iterator',
+    }, {
       title: 'MEMENTO', link: 'behavioral-patterns/memento',
     }]
   }]

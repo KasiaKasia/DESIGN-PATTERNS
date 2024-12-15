@@ -7,7 +7,32 @@ import { map } from 'rxjs/internal/operators/map';
   selector: 'app-facade',
   standalone: true,
   imports: [AsyncPipe],
-  templateUrl: './facade.component.html',
+  template: ` 
+    <p>Design Pattern Facade</p>
+
+    @if (facadeService$ | async; as data) {
+        <div>{{ data.user.name }}</div>
+    <div>
+        <h2>Select categories</h2>
+        <select>
+            @for(category of data.categories; track category) {
+              <option [value]="category.id">
+                  {{ category.name }}
+              </option>
+            }
+        </select>
+
+        <h2>Select Product</h2>
+        <select>
+            @for(product of data.products; track product) {
+                <option [value]="product.id">
+                    {{ product.name }}
+                </option>
+            }
+        </select>
+    </div>
+    }`,
+ // templateUrl: './facade.component.html',
   styleUrl: './facade.component.scss'
 })
 export class FacadeComponent {

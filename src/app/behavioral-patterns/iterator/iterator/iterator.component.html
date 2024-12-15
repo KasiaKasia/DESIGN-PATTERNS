@@ -1,0 +1,11 @@
+<div>
+    <h1>Tree Iterator</h1>
+    <input [(ngModel)]="newNodeValue" placeholder="Enter node value" />
+    <button (click)="addNode()">Add Node</button>
+    <h2>In-Order Traversal:</h2>
+    <ul>
+        @for (node of traversalResult; track node) {
+        <li>{{ node }}</li>
+        }
+    </ul>
+</div>

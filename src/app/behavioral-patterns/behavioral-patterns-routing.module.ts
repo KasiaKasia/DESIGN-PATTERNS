@@ -12,6 +12,9 @@ const routes: Routes = [{
 }, {
   path: 'memento',
   loadChildren: () => import('./memento/memento.module').then(a => a.MementoModule)
+}, {
+  path: 'iterator',
+  loadChildren: () => import('./iterator/iterator.module').then(a => a.IteratorModule)
 }];
 
 @NgModule({
