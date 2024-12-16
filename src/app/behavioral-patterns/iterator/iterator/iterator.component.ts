@@ -6,6 +6,9 @@ interface Iterator<T> {
   next(): T; 
   valid(): boolean; 
 }
+interface Aggregator { 
+  getIterator(): Iterator<TreeNode> 
+}
 
 class TreeNode {
   value: string;
@@ -19,7 +22,7 @@ class TreeNode {
   }
 }
 
-class Tree {
+class Tree implements Aggregator {
   private root: TreeNode | null;
   private size: number;
 
@@ -37,7 +40,7 @@ class Tree {
   }
 
   public add(value: string): void {
-    const newNode = new TreeNode(value);
+    const newNode = new TreeNode(value); 
     if (!this.root) {
       this.root = newNode;
     } else {
@@ -81,6 +84,7 @@ class TreeIterator implements Iterator<TreeNode> {
   private traverseLeft(node: TreeNode | null): void {
     while (node) {
       this.stack.push(node);
+      console.log('traverseLeft ', node.left)
       node = node.left;
     }
   }
