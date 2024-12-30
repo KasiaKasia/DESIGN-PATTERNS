@@ -8,13 +8,16 @@ const routes: Routes = [{
   data: { title: 'Behavioral Patterns' },
 }, {
   path: 'chain-of-responsibility',
-  loadChildren: () => import('./chain-of-responsibility/chain-of-responsibility.module').then(a => a.ChainOfResponsibilityModule)
+  loadChildren: () => import('./chain-of-responsibility/chain-of-responsibility.module').then(c => c.ChainOfResponsibilityModule)
 }, {
   path: 'memento',
-  loadChildren: () => import('./memento/memento.module').then(a => a.MementoModule)
+  loadChildren: () => import('./memento/memento.module').then(m => m.MementoModule)
 }, {
   path: 'iterator',
-  loadChildren: () => import('./iterator/iterator.module').then(a => a.IteratorModule)
+  loadChildren: () => import('./iterator/iterator.module').then(i => i.IteratorModule)
+}, {
+  path: 'observer',
+  loadChildren: () => import('./observer/observer.module').then(o => o.ObserverModule)
 }];
 
 @NgModule({

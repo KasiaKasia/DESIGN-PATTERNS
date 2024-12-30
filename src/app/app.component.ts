@@ -26,6 +26,8 @@ export class AppComponent {
       title: 'ITERATOR', link: 'behavioral-patterns/iterator',
     }, {
       title: 'MEMENTO', link: 'behavioral-patterns/memento',
+    }, {
+      title: 'OBSERVER', link: 'behavioral-patterns/observer',
     }]
   }]
 }

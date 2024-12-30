@@ -84,7 +84,6 @@ class TreeIterator implements Iterator<TreeNode> {
   private traverseLeft(node: TreeNode | null): void {
     while (node) {
       this.stack.push(node);
-      console.log('traverseLeft ', node.left)
       node = node.left;
     }
   }
