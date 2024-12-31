@@ -1,1 +1,13 @@
-<p>observer works!</p>
+<app-crypto />
+@for(crypto of cryptocurrencies; track crypto.code; let i=$index) {
+<label>
+    <div>
+        <input type="checkbox" 
+        [checked]="crypto.active" 
+        (change)="onCheckboxChange($event, i)" 
+        name="crypto-{{ i }}"
+        id="crypto-{{ i }}" />
+        {{ crypto.name }} ({{ crypto.code }}) price: {{ crypto.price }}
+    </div>
+</label>
+}
