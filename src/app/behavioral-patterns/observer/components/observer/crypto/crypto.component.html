@@ -1,0 +1,7 @@
+@for(crypto of observedCryptocurrencies; track crypto.code ) {
+<label>
+    @if(crypto.active){
+        {{ crypto.name }} ({{ crypto.code }}) price: {{ crypto.price }}
+    }
+</label>
+}

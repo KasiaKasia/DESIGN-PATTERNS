@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ObserverCryptocurrencyService } from '../server-observer/observer-cryptocurrency.service';
-import { CryptoComponent } from '../components/crypto/crypto.component';
+import { ObserverCryptocurrencyService } from '../services/service-observer/observer-cryptocurrency.service';
+import { CryptoComponent } from '../components/observer/crypto/crypto.component';
+import { cryptocurrencies } from '../services/data/data';
+import { ObserverRxJsCryptocurrencyService } from '../services/service-observer-rxjs/observer-rxjs-cryptocurrency.service';
+import { ObserverRxJsComponent } from '../components/observer-rxjs/observer-rxjs.component';
 
 export interface Observer {
   update(cryptocurrencies: Cryptocurrency[]): void;
@@ -23,18 +26,20 @@ export interface Cryptocurrency {
 @Component({
   selector: 'app-observer',
   standalone: true,
-  imports: [FormsModule, CryptoComponent],
+  imports: [FormsModule, CryptoComponent, ObserverRxJsComponent],
   providers: [ObserverCryptocurrencyService],
   templateUrl: './observer.component.html',
   styleUrl: './observer.component.scss'
 })
 export class ObserverComponent implements Observer {
-  cryptocurrencies = this.observerCryptocurrencyService.cryptocurrencies
+  cryptocurrencies = cryptocurrencies
 
-  constructor(private observerCryptocurrencyService: ObserverCryptocurrencyService) { }
+  constructor(private observerCryptocurrencyService: ObserverCryptocurrencyService,
+              private observerRxJsCryptocurrencyService: ObserverRxJsCryptocurrencyService
+  ) { }
   
   ngOnInit(): void {
-    this.observerCryptocurrencyService.registerObserver(this);
+    this.observerCryptocurrencyService.registerObserver(this);   
   }
  
   ngOnDestroy(): void {
@@ -49,5 +54,7 @@ export class ObserverComponent implements Observer {
     const inputElement = event.target as HTMLInputElement;
     const isChecked = inputElement.checked;
     this.observerCryptocurrencyService.updateCryptocurrencyStatus(index, isChecked);
+    this.observerRxJsCryptocurrencyService.toggleCryptocurrency(index, isChecked);
   }
 }
+
