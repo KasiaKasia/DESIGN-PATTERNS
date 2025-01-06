@@ -8,9 +8,7 @@ import { cryptocurrencies } from '../data/data';
 })
 export class ObserverRxJsCryptocurrencyService {
   cryptocurrencies = cryptocurrencies
- 
-   cryptocurrenciesSubject = new Subject<Cryptocurrency[]>();
-
+  cryptocurrenciesSubject = new Subject<Cryptocurrency[]>();
   cryptocurrencies$ = this.cryptocurrenciesSubject.asObservable();
 
   toggleCryptocurrency(index: number, isActive: boolean): void {
