@@ -1,7 +1,7 @@
 <p>observer!</p>
 @for(crypto of observedCryptocurrencies; track crypto.code ) {
 <label>
-    @if(crypto.active){
+    @if(crypto.active) {
         {{ crypto.name }} ({{ crypto.code }}) price: {{ crypto.price }}
     }
 </label> 

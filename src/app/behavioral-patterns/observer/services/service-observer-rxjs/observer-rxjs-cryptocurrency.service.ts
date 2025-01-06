@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { Cryptocurrency } from '../../observer/observer.component';
 import { cryptocurrencies } from '../data/data';
+import { Cryptocurrency } from '../service-observer/observer-cryptocurrency.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ObserverRxJsCryptocurrencyService {
-  cryptocurrencies = cryptocurrencies
-  cryptocurrenciesSubject = new Subject<Cryptocurrency[]>();
+  private cryptocurrencies = cryptocurrencies
+  private cryptocurrenciesSubject = new Subject<Cryptocurrency[]>();
   cryptocurrencies$ = this.cryptocurrenciesSubject.asObservable();
 
   toggleCryptocurrency(index: number, isActive: boolean): void {

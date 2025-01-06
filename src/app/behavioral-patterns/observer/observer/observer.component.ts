@@ -1,34 +1,18 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ObserverCryptocurrencyService } from '../services/service-observer/observer-cryptocurrency.service';
+import { Cryptocurrency, Observer, ObserverCryptocurrencyService } from '../services/service-observer/observer-cryptocurrency.service';
 import { ObserverComponent } from '../components/observer/observer/observer.component';
 import { cryptocurrencies } from '../services/data/data';
 import { ObserverRxJsCryptocurrencyService } from '../services/service-observer-rxjs/observer-rxjs-cryptocurrency.service';
 import { ObserverRxJsComponent } from '../components/observer/observer-rxjs/observer-rxjs.component';
  
-export interface Observer {
-  update(cryptocurrencies: Cryptocurrency[]): void;
-}
-
-export interface SubjectForCryptocurrency {
-  registerObserver(observer: Observer): void;
-  removeObserver(observer: Observer): void;
-  notifyObservers(): void;
-}
-
-export interface Cryptocurrency {
-  readonly name: string;
-  readonly code: string;
-  active: boolean;
-  price: number;
-}
 
 @Component({
   selector: 'app-observer',
   standalone: true,
   imports: [FormsModule, ObserverComponent, ObserverRxJsComponent],
   providers: [ObserverCryptocurrencyService],
-  templateUrl: './observer.component.html',
+   templateUrl: './observer.component.html',
   styleUrl: './observer.component.scss'
 })
 export class DesignPatternsObserverComponent implements Observer {

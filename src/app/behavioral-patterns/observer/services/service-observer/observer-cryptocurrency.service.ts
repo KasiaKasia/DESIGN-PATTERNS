@@ -1,12 +1,29 @@
 import { Injectable } from '@angular/core';
-import { Observer, SubjectForCryptocurrency } from '../../observer/observer.component';
 import { cryptocurrencies } from '../data/data';
+
+export interface Observer {
+  update(cryptocurrencies: Cryptocurrency[]): void;
+}
+
+export interface SubjectForCryptocurrency {
+  registerObserver(observer: Observer): void;
+  removeObserver(observer: Observer): void;
+  notifyObservers(): void;
+}
+
+export interface Cryptocurrency {
+  readonly name: string;
+  readonly code: string;
+  active: boolean;
+  price: number;
+}
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class ObserverCryptocurrencyService implements SubjectForCryptocurrency {
-  observers: Observer[] = [];
+  private observers: Observer[] = [];
 
   registerObserver(observer: Observer): void {
     this.observers.push(observer);

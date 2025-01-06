@@ -1,5 +1,6 @@
-import { Cryptocurrency } from "../../observer/observer.component";
+import { Cryptocurrency } from "../service-observer/observer-cryptocurrency.service";
 
+ 
 export const generateRandomPrice = () => {
     return Math.floor(Math.random() * 1000000) / 100;
 }

@@ -1,12 +1,11 @@
 import { Component, DestroyRef, inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { Cryptocurrency } from '../../../observer/observer.component';
 import { ObserverRxJsCryptocurrencyService } from '../../../services/service-observer-rxjs/observer-rxjs-cryptocurrency.service';
+import { Cryptocurrency } from '../../../services/service-observer/observer-cryptocurrency.service';
 
 @Component({
   selector: 'app-design-patterns-observer-rxjs',
   standalone: true,
-  providers: [],
   templateUrl: './observer-rxjs.component.html',
   styleUrl: './observer-rxjs.component.scss'
 })
