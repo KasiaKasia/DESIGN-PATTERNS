@@ -4,6 +4,7 @@ import { BehavioralPatternsRoutingModule } from './behavioral-patterns-routing.m
 import { ChainOfResponsibilityModule } from './chain-of-responsibility/chain-of-responsibility.module';
 import { MementoModule } from './memento/memento.module';
 import { IteratorModule } from './iterator/iterator.module';
+import { ObserverModule } from './observer/observer.module';
 
 @NgModule({
   imports: [
@@ -12,6 +13,7 @@ import { IteratorModule } from './iterator/iterator.module';
     ChainOfResponsibilityModule,
     IteratorModule,
     MementoModule,
+    ObserverModule
   ]
 })
 export class BehavioralPatternsModule {}

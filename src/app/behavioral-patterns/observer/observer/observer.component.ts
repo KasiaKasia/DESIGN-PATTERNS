@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ObserverCryptocurrencyService } from '../services/service-observer/observer-cryptocurrency.service';
-import { CryptoComponent } from '../components/observer/crypto/crypto.component';
+import { ObserverComponent } from '../components/observer/observer/observer.component';
 import { cryptocurrencies } from '../services/data/data';
 import { ObserverRxJsCryptocurrencyService } from '../services/service-observer-rxjs/observer-rxjs-cryptocurrency.service';
-import { ObserverRxJsComponent } from '../components/observer-rxjs/observer-rxjs.component';
-
+import { ObserverRxJsComponent } from '../components/observer/observer-rxjs/observer-rxjs.component';
+ 
 export interface Observer {
   update(cryptocurrencies: Cryptocurrency[]): void;
 }
@@ -26,12 +26,12 @@ export interface Cryptocurrency {
 @Component({
   selector: 'app-observer',
   standalone: true,
-  imports: [FormsModule, CryptoComponent, ObserverRxJsComponent],
+  imports: [FormsModule, ObserverComponent, ObserverRxJsComponent],
   providers: [ObserverCryptocurrencyService],
   templateUrl: './observer.component.html',
   styleUrl: './observer.component.scss'
 })
-export class ObserverComponent implements Observer {
+export class DesignPatternsObserverComponent implements Observer {
   cryptocurrencies = cryptocurrencies
 
   constructor(private observerCryptocurrencyService: ObserverCryptocurrencyService,

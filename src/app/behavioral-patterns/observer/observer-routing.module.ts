@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ObserverComponent } from './observer/observer.component';
+import { DesignPatternsObserverComponent } from './observer/observer.component';
 
 const routes: Routes = [{
   path: '',
-  component: ObserverComponent,
+  component: DesignPatternsObserverComponent,
   data: { title: 'Observer' },
 }];
 

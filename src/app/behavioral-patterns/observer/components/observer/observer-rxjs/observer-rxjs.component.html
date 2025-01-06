@@ -1,0 +1,8 @@
+<p>observer-rx-js!</p>
+@for(crypto of selectedCryptocurrencies; track crypto.code; let i=$index) {
+  <label>
+    @if(crypto.active){
+        {{ crypto.name }} ({{ crypto.code }}) price: {{ crypto.price }}
+    }
+  </label>
+}
