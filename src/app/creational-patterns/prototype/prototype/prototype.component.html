@@ -1,0 +1,26 @@
+<form [formGroup]="userForm">
+    <div>
+        <label for="name">Name:</label>
+        <input type="text" formControlName="name" id="name">
+    </div>
+    <div>
+        <label for="age">Age:</label>
+        <input type="number" formControlName="age" id="age">
+    </div>
+    <div>
+        <label for="city">City:</label>
+        <input type="text" formControlName="city" id="city">
+    </div>
+    <div>
+        <label for="street">Street:</label>
+        <input type="text" formControlName="street" id="street">
+    </div>
+    <button type="button" (click)="cloneUser()">Clone User</button>
+</form>
+@if (clonedUser) {
+    <h3>Cloned User</h3>
+    <p>Name: {{ clonedUser.getName() }}</p>
+    <p>Age: {{ clonedUser.getAge() }}</p>
+    <p>City: {{ clonedUser.getAddress().getCity() }}</p>
+    <p>Street: {{ clonedUser.getAddress().getStreet() }}</p>
+}

@@ -4,16 +4,17 @@ import { CreationalPatternsRoutingModule } from './creational-patterns-routing.m
 import { CreationalPatternsComponent } from './creational-patterns/creational-patterns.component';
 import { BuilderModule } from './builder/builder.module';
 import { SimpleFactoryModule } from './simple-factory/simple-factory.module';
+import { PrototypeModule } from './prototype/prototype.module';
 
 
 @NgModule({
-  declarations: [],
   imports: [
     CommonModule,
     CreationalPatternsRoutingModule,
     CreationalPatternsComponent,
     BuilderModule,
-    SimpleFactoryModule
+    SimpleFactoryModule,
+    PrototypeModule
   ]
 })
-export class CreationalPatternsModule { }
+export class CreationalPatternsModule {}

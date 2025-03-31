@@ -15,6 +15,8 @@ export class AppComponent {
     types: [{
       title: 'BUILDER', link: 'creational-patterns/builder',
     }, {
+      title: 'PROTOTYPE', link: 'creational-patterns/prototype',
+    }, {
       title: 'SIMPLE FACTORY', link: 'creational-patterns/simple-factory',
     }]
   }]

@@ -5,7 +5,6 @@ import { BuilderComponent } from './builder/builder.component';
 
 
 @NgModule({
-  declarations: [],
   imports: [
     CommonModule,
     BuilderRoutingModule,

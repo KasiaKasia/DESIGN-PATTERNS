@@ -10,6 +10,9 @@ const routes: Routes = [{
   path: 'builder',
   loadChildren: () => import('./builder/builder.module').then(b => b.BuilderModule)
 }, {
+  path: 'prototype',
+  loadChildren: () => import('./prototype/prototype.module').then(p => p.PrototypeModule)
+}, {
   path: 'simple-factory',
   loadChildren: () => import('./simple-factory/simple-factory.module').then(sf => sf.SimpleFactoryModule)
 }];
