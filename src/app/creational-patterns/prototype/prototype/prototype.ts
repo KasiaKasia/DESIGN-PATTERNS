@@ -1,57 +1,63 @@
 export interface Cloneable<T> {
     clone(): T;
-  }
-  
-  export class Address implements Cloneable<Address> {
+}
+
+export class Address implements Cloneable<Address> {
     constructor(
-      private city: string, 
-      private street: string) {}
-  
+        private city: string,
+        private street: string) { }
+
     clone(): Address {
-      return Object.create(this);
-  
-      /*
-      An object can also be created in this way:
-       return new Address(this.city, this.street);
-      */
+        return new Address(this.city, this.street);
     }
+
     getCity(): string {
-      return this.city;
+        return this.city;
     }
-  
+    setCity(city: string) {
+        this.city = city;
+    }
+
     getStreet(): string {
-      return this.street;
+        return this.street;
     }
-  }
-  export class User implements Cloneable<User> {
+    setStreet(street: string) {
+        this.street = street;
+    }
+}
+export class User implements Cloneable<User> {
     constructor(
-      private name: string,
-      private age: number,
-      private address: Address
-    ) {}
-  
+        private name: string,
+        private age: number,
+        private address: Address
+    ) { }
+
     clone(): User {
-      return Object.create(this); 
-      /*
-     An object can also be created in this way:
-     return new User(
-       this.name,
-       this.age,
-       this.address.clone() 
-     );
-     */
+        return new User(
+            this.name,
+            this.age,
+            this.address.clone()
+        );
     }
-  
+
     getName(): string {
-      return this.name;
+        return this.name;
     }
-  
+    setName(name: string) {
+        this.name = name;
+    }
+
     getAge(): number {
-      return this.age;
+        return this.age;
     }
-  
+    setAge(age: number) {
+        this.age = age;
+    }
+    
     getAddress(): Address {
-      return this.address;
+        return this.address;
     }
-  } 
-   
+    setAddress(address: Address) {
+        this.address = address;
+    }
+}

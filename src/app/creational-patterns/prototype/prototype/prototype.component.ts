@@ -36,5 +36,14 @@ export class PrototypeComponent {
     } else {
       console.info('Primitive field values have not been copied.');
     }
+
+    const original = new Address("property initialization", "Street");
+    let clone = original.clone();
+    
+    console.info(clone.getCity()); // "property initialization"
+    clone.setCity("change properties for copy/clone") ; 
+    console.info(original.getCity()); // "property initialization"  
+    console.info(clone.getCity()); // "change properties for copy/clone
+ 
   }
 }
