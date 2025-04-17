@@ -11,7 +11,7 @@
   <div class="row">
     <label for="managerName">Name manager: </label>
     <input type="text" id="managerName" name="managerName" [(ngModel)]="company.managerName">
-    <button (click)="addManager(company.managerName)">Add Manager</button>
+    <button (click)="addManager(company.selectedManagerName, company.managerName)">Add Manager</button>
   </div>
 
   <div class="row" *ngIf="selectedManager">

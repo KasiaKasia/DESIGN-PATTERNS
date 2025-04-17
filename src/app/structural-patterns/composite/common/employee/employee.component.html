@@ -2,7 +2,12 @@
     <span>{{ manager.getName() }}</span>
     <ul>
         <li *ngFor="let employee of manager?.getEmployees()">
-            <span>{{ employee.getName() }}</span>
+            <ng-container *ngIf="isManager(employee); else regularEmployee">
+                <app-employee [manager]="employee"></app-employee>
+            </ng-container>
+            <ng-template #regularEmployee>
+                <span>{{ employee.getName() }}</span>
+            </ng-template>
         </li>
     </ul>
 </div>

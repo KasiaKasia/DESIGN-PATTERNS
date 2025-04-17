@@ -23,17 +23,22 @@ export class CompositeComponent {
     selectedManagerName: ''
   };
 
-  addManager(name: string) {
-    const manager = new Manager(name);
-    this.boss.add(manager);
+  addManager(managerName: string, name: string) {
+    const parent = this.findManager(managerName);
+    const newManager = new Manager(name);
+    if (parent) {
+      parent.add(newManager);
+    } else if (managerName === 'Owner') {
+      this.boss.add(newManager);
+    }
     this.company.managerName = '';
   }
 
   addEmployeeForManager(managerName: string, employeeNeme: string) {
     const manager = this.findManager(managerName);
     if (manager) {
-      const developer = new Employee(employeeNeme);
-      manager.add(developer);
+      const employee = new Employee(employeeNeme);
+      manager.add(employee);
       this.company.employeeNeme = '';
     }
   }
