@@ -1,0 +1,8 @@
+<li>
+    {{ node.getName() }}
+    <ul *ngIf="isComposite(node)">
+        <li *ngFor="let child of getChildren(node)">
+            <app-tree-node [node]="child" />
+        </li>
+    </ul>
+</li>

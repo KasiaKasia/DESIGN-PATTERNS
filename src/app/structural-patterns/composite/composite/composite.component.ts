@@ -1,11 +1,6 @@
 import { Component } from '@angular/core';
-import { Employee, Manager, } from '../model/model';
+import { Composite, Employee, HierarchicalStructure } from '../model/model';
 
-export interface ConfigurationOfAddingAnEmployee {
-  managerName: string;
-  employeeNeme: string;
-  selectedManagerName: string;
-}
 
 @Component({
   selector: 'app-composite',
@@ -13,53 +8,46 @@ export interface ConfigurationOfAddingAnEmployee {
   styleUrls: ['./composite.component.scss']
 })
 export class CompositeComponent {
-  title = 'Company Structure';
-  boss: Manager = new Manager('Owner');
-  selectedManager: Manager | null = null;
+  tree: Composite= new Composite('CEO');
+  managers: Composite[] = this.getAllManagers(this.tree);
+ 
+  selectedManager!: Composite;
+  managerName = '';
+  employeeNeme = ''; 
+ 
+  addManager(name: string): void {
+    if (!this.selectedManager || !name) return;
+    const newManager = new Composite(name);
 
-  company: ConfigurationOfAddingAnEmployee = {
-    managerName: '',
-    employeeNeme: '',
-    selectedManagerName: ''
-  };
-
-  addManager(managerName: string, name: string) {
-    const parent = this.findManager(managerName);
-    const newManager = new Manager(name);
-    if (parent) {
-      parent.add(newManager);
-    } else if (managerName === 'Owner') {
-      this.boss.add(newManager);
-    }
-    this.company.managerName = '';
+    this.selectedManager.add(newManager);
+    
+    this.managers = this.getAllManagers(this.tree);
+    this.managerName = '';
   }
 
-  addEmployeeForManager(managerName: string, employeeNeme: string) {
-    const manager = this.findManager(managerName);
-    if (manager) {
-      const employee = new Employee(employeeNeme);
-      manager.add(employee);
-      this.company.employeeNeme = '';
-    }
-  }
+  getAllManagers(node: HierarchicalStructure): Composite[] {
+    let result: Composite[] = [];
 
-  findManager(name: string): Manager | null {
-    const managers = this.getAllManagers(this.boss);
-    return managers.find(manager => manager.getName() === name) || null;
-  }
+    if (node.isComposite()) {
+      result.push(node as Composite);
 
-  getAllManagers(manager: Manager): Manager[] {
-    let managers: Manager[] = [manager];
-    for (const employee of manager.getEmployees()) {
-      if (employee instanceof Manager) {
-        managers = managers.concat(this.getAllManagers(employee));
+      const children = (node as Composite).getChildren();
+      for (const child of children) {
+        result = result.concat(this.getAllManagers(child));
       }
     }
-    return managers;
+    return result;
   }
 
-  setSelectedManager(managerName: string) {
-    this.selectedManager = this.findManager(managerName);
+  setSelectedManager(manager: Composite) {
+    this.selectedManager = manager;
   }
 
+  addEmployeeForManager(employeeName: string) {
+    if (!this.selectedManager || !employeeName) return;
+
+    const newEmployee = new Employee(employeeName);
+    this.selectedManager.add(newEmployee);
+    this.employeeNeme = '';
+  }
 }

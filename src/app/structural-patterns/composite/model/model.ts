@@ -1,79 +1,72 @@
-export interface EmployeeHierarchyStructure {
-    add?(employee: EmployeeHierarchyStructure): void;
-    remove?(employee: EmployeeHierarchyStructure): void;
-    getChild?(index: number): EmployeeHierarchyStructure | null;
-    getName(): string;
-    printDetails(indent?: string): void;
-    getEmployees?(): EmployeeHierarchyStructure[];
+export abstract class HierarchicalStructure {
+  protected parent!: HierarchicalStructure | null;
+
+  public setParent(parent: HierarchicalStructure | null) {
+    this.parent = parent;
+  }
+
+  public getParent(): HierarchicalStructure | null {
+    return this.parent;
+  }
+
+  public add(component: HierarchicalStructure): void { }
+
+  public remove(component: HierarchicalStructure): void { }
+
+  public isComposite(): boolean {
+    return false;
+  }
+
+  public abstract getName(): string;
 }
 
-export class Manager implements EmployeeHierarchyStructure {
-    private name: string; 
-    private employees: Set<EmployeeHierarchyStructure>;
+export class Employee extends HierarchicalStructure {
+  private name: string;
 
-    constructor(name: string) {
-        this.name = name; 
-        this.employees = new Set<EmployeeHierarchyStructure>();
-    }
+  constructor(name: string) {
+    super()
+    this.name = name;
+  }
 
-    add(employee: EmployeeHierarchyStructure): void {
-        this.employees.add(employee);
-    }
+  public getName(): string {
+    return this.name;
+  }
 
-    remove(employee: EmployeeHierarchyStructure): void {
-        this.employees.delete(employee);
-    }
-
-    getChild(index: number): EmployeeHierarchyStructure | null {
-        return Array.from(this.employees)[index] || null;
-    }
-
-    getName(): string {
-        return this.name;
-    }
-
-    printDetails(indent: string = ''): void {
-        console.info(`${indent} Manager: ${this.getName()}`);
-        for (const employee of this.employees) {
-            employee.printDetails(indent + '  ');
-        }
-    }
-
-    getEmployees(): EmployeeHierarchyStructure[] {
-        return Array.from(this.employees);
-    }
+  public override isComposite(): boolean {
+    return false;
+  }
 }
 
-export class Employee implements EmployeeHierarchyStructure {
-    private name: string; 
+export class Composite extends HierarchicalStructure {
+  protected children: HierarchicalStructure[] = [];
+  private name: string;
 
-    constructor(name: string ) {
-        this.name = name; 
-    }
+  constructor(name: string) {
+    super();
+    this.name = name;
+  }
 
-    add(employee: EmployeeHierarchyStructure): void {
-        throw new Error("Cannot add to a employee.");
-    }
+  public override add(component: HierarchicalStructure): void {
+    this.children.push(component);
+    component.setParent(this);
+  }
 
-    remove(employee: EmployeeHierarchyStructure): void {
-        throw new Error("Cannot remove from a employee.");
-    }
+  public override remove(component: HierarchicalStructure): void {
+    const componentIndex = this.children.indexOf(component);
+    this.children.splice(componentIndex, 1);
 
-    getChild(index: number): EmployeeHierarchyStructure | null {
-        return null;
-    }
+    component.setParent(null);
+  }
 
-    getName(): string {
-        return this.name;
-    }
+  public override isComposite(): boolean {
+    return true;
+  }
 
-    printDetails(indent: string = ''): void {
-        console.info(`${indent}Employee: ${this.getName()}`);
-    }
+  public getChildren(): HierarchicalStructure[] {
+    return this.children;
+  }
 
-    getEmployees(): EmployeeHierarchyStructure[] {
-        return [];
-    }
+  public getName(): string {
+    return this.name;
+  }
 }
-
-

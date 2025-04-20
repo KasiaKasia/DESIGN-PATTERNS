@@ -4,18 +4,17 @@ import { CompositeComponent } from './composite/composite.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CompositeRoutingModule } from './composite-routing.module';
 import { FormsModule } from '@angular/forms';
-import { EmployeeComponent } from './common/employee/employee.component';
-
+import { TreeNodeComponent } from './common/tree-node/tree-node.component';
 
 
 @NgModule({
-  declarations: [CompositeComponent, EmployeeComponent],
+  declarations: [CompositeComponent, TreeNodeComponent],
   imports: [
     CommonModule,
     HttpClientModule,
     FormsModule,
-    CompositeRoutingModule
+    CompositeRoutingModule,
   ],
-  exports: [CompositeComponent, EmployeeComponent]
+  exports: [CompositeComponent, TreeNodeComponent]
 })
 export class CompositeModule { }
